@@ -140,7 +140,28 @@
     cursor: default;
     transform-origin: 90% right;  /* vị trí tâm animation */
     animation: headerNotifyGrowth ease-in 0.2s;
+    will-change: opacity, transform;
     display: none;
+}
+
+.header__notify::before {
+    content:  "";
+    border-width: 20px 27px;
+    position: absolute;
+    border-style: solid;
+    border-color: transparent transparent var(--white-color) transparent;
+    right: 4px;
+    top: -29px;
+}
+
+.header__notify::after {
+    content:  "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: -16px;
+    width: 90px;
+    height: 20px;
 }
 
 @keyframes headerNotifyGrowth {
