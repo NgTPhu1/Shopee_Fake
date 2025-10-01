@@ -3,6 +3,7 @@
     --white-color: #fff;
     --back-color: #000;
     --text-color: #333;
+    --border-color:#dbdbdb;
 }
 
 *{
@@ -49,6 +50,7 @@ html {
     right: 0;
     left: 0;
     bottom: 0;
+    display: flex;
 }
 
 .modal__overplay {
@@ -59,5 +61,28 @@ html {
 }
 
 .modal__body {
-    
+    background-color: var(--white-color);
+    margin: auto;
+    position: relative;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+/* Button style */
+
+.btn {
+    min-width: 142px;
+    height: 36px;
+    border: none;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0
+}
+
+.btn.btn--primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    cursor: pointer;
 }
