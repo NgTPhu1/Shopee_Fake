@@ -107,9 +107,9 @@
                                 Trợ giúp
                             </a>
                         </li>
-                        <li class="header__navbar-item header__navbar-item--strong header__navbar-item--separate">
+                        <li class="header__navbar-item header__navbar-item--strong header__navbar-item--separate js-register">
                             Đăng ký</li>
-                        <li class="header__navbar-item header__navbar-item--strong">Đăng nhập</li>
+                        <li class="header__navbar-item header__navbar-item--strong js-login">Đăng nhập</li>
                     </ul>
                 </nav>
             </div>
@@ -130,11 +130,11 @@
 
 
                 <!-- Authen form -->
-                <!-- <div class="auth-form">
+                <div class="auth-form auth-register">
                     <div class="auth-form__container">
                         <div class="auth-form__header">
                             <h3 class="auth-form__heading">Đăng ký</h3>
-                            <span class="auth-form__switch-btn">Đăng nhập</span>
+                            <span class="auth-form__switch-btn js-switch-register">Đăng nhập</span>
                         </div>
 
                         <div class="auth-form__form">
@@ -158,7 +158,7 @@
                         </div>
 
                         <div class="auth-form__controls">
-                            <button class="btn--normal btn auth-form__controls-back">TRỞ LẠI</button>
+                            <button class="btn--normal btn auth-form__controls-back js-back">TRỞ LẠI</button>
                             <button class="btn btn--primary">ĐĂNG KÝ</button>
                         </div>
                     </div>
@@ -178,14 +178,14 @@
                             </span>
                         </a>
                     </div>
-                </div> -->
+                </div>
 
                  <!-- Login form -->
-                   <div class="auth-form">
+                   <div class="auth-form auth-login">
                     <div class="auth-form__container">
                         <div class="auth-form__header">
                             <h3 class="auth-form__heading">Đăng nhập</h3>
-                            <span class="auth-form__switch-btn">Đăng ký</span>
+                            <span class="auth-form__switch-btn js-switch-login">Đăng ký</span>
                         </div>
 
                         <div class="auth-form__form">
@@ -207,7 +207,7 @@
                         </div>
 
                         <div class="auth-form__controls">
-                            <button class="btn--normal btn auth-form__controls-back">TRỞ LẠI</button>
+                            <button class="btn--normal btn auth-form__controls-back js-back">TRỞ LẠI</button>
                 
                             <button class="btn btn--primary">ĐĂNG NHẬP</button>
                         </div>
@@ -232,6 +232,67 @@
             </div>
         </div>
     </div>
+
+    <!-- JS Modal Auth -->
+    <script>
+        const formLogin = document.querySelector('.js-login')
+        const formRegister = document.querySelector('.js-register')
+        const modalForm = document.querySelector('.modal')
+        const authLogin = document.querySelector('.auth-login')
+        const authRegister = document.querySelector('.auth-register')
+        const btnBack = document.querySelectorAll('.js-back')
+        const switchLogin = document.querySelector('.js-switch-login')
+        const switchRegister = document.querySelector('.js-switch-register')
+        const modalBody = document.querySelectorAll('.modal__body')
+
+        // Mở form đăng nhập
+        formLogin.onclick = function() {
+            modalForm.classList.add('open')
+            authLogin.classList.add('open')
+            authRegister.classList.remove('open')
+        }
+
+        // Mở form đăng ký
+        formRegister.onclick = function() {
+            modalForm.classList.add('open')
+            authRegister.classList.add('open')
+            authLogin.classList.remove('open')
+        }
+
+        // Chuyển form qua lại
+        switchLogin.onclick = function() {
+            authLogin.classList.remove('open')
+            authRegister.classList.add('open')
+        }
+
+        switchRegister.onclick = function() {        
+            authRegister.classList.remove('open')
+            authLogin.classList.add('open')
+        }
+
+        // Click ra ngoài thì tắt modal
+        modalForm.onclick = function () {
+            modalForm.classList.remove('open')
+        }
+
+        // Ngăn việc click trong form làm tắt modal
+        modalBody.forEach(body => {
+            body.onclick = function(e) {
+                e.stopPropagation()
+            }
+        })
+
+        // Nút trở lại
+        btnBack.forEach(btn => {
+            btn.onclick = function () {
+                modalForm.classList.remove('open')
+            }
+        })
+
+
+
+
+    </script>
 </body>
 
 </html>
